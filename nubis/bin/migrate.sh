@@ -18,7 +18,7 @@ else
 fi
 
 # Source the consul connection details from the metadata api
-eval `ec2metadata --user-data`
+eval `curl -fq http://169.254.169.254/latest/user-data`
 
 # Check to see if NUBIS_MIGRATE was set in userdata. If not we exit quietly.
 if [ ${NUBIS_MIGRATE:-0} == '0' ]; then
